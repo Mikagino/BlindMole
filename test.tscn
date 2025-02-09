@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://5m2bn5mdholt"]
+
+[ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_b2rdi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1f046"]
+noise_type = 3
+frequency = 0.1
+
+[sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_aaaxj"]
+noise = SubResource("FastNoiseLite_1f046")
+height_range = 100.0
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_wh4ie"]
+texturing_mode = 1
+mesh_optimization_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.567, 0)
+generator = SubResource("VoxelGeneratorNoise_aaaxj")
+mesher = SubResource("VoxelMesherTransvoxel_wh4ie")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.538991, 0.842311, 0, -0.842311, 0.538991, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_b2rdi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
