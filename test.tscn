@@ -4,6 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_b2rdi"]
 
 [sub_resource type="Environment" id="Environment_8ooo3"]
+tonemap_mode = 3
+tonemap_exposure = 0.75
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0442
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1f046"]
 noise_type = 3
@@ -35,7 +46,7 @@ material = ExtResource("1_8guec")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.538991, 0.842311, 0, -0.842311, 0.538991, 0, 0, 0)
-light_energy = 0.25
+light_energy = 0.4
 
 [node name="Player" parent="." instance=ExtResource("1_b2rdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)

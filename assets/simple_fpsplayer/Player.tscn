@@ -33,5 +33,12 @@ script = ExtResource("2_gwqkd")
 [node name="GrabPosition3D" type="Marker3D" parent="rotation_helper/Camera3D/ability_grab"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="rotation_helper/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40632, 0)
+light_color = Color(0.963719, 0.952327, 0.744811, 1)
+light_energy = 16.0
+light_size = 0.1
+shadow_enabled = true
+
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 requires_visuals = false
