@@ -1,6 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://5m2bn5mdholt"]
+[gd_scene load_steps=9 format=3 uid="uid://5m2bn5mdholt"]
 
+[ext_resource type="Material" uid="uid://sx4nwkt36yrl" path="res://Environment/Shaders/Dirt.material" id="1_8guec"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_b2rdi"]
+[ext_resource type="Material" uid="uid://djolsb5gttpyw" path="res://Environment/Shaders/Stone.material" id="3_quhew"]
+
+[sub_resource type="Environment" id="Environment_8ooo3"]
+tonemap_mode = 3
+tonemap_exposure = 0.75
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0442
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0, 0, 0, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1f046"]
 noise_type = 3
@@ -8,21 +23,36 @@ frequency = 0.1
 
 [sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_aaaxj"]
 noise = SubResource("FastNoiseLite_1f046")
-height_range = 100.0
+height_start = -50.0
+height_range = 50.0
 
 [sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_wh4ie"]
 texturing_mode = 1
 mesh_optimization_enabled = true
 
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_oa07p"]
+
 [node name="Node3D" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8ooo3")
+
 [node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -75.567, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.25266, 0)
+visible = false
 generator = SubResource("VoxelGeneratorNoise_aaaxj")
 mesher = SubResource("VoxelMesherTransvoxel_wh4ie")
+gi_mode = 2
+material = ExtResource("1_8guec")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.538991, 0.842311, 0, -0.842311, 0.538991, 0, 0, 0)
+light_energy = 0.4
 
 [node name="Player" parent="." instance=ExtResource("1_b2rdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = SubResource("VoxelGeneratorNoise_aaaxj")
+mesher = SubResource("VoxelMesherTransvoxel_oa07p")
+material_override = ExtResource("3_quhew")
