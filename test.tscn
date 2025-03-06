@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://5m2bn5mdholt"]
+[gd_scene load_steps=9 format=3 uid="uid://5m2bn5mdholt"]
 
 [ext_resource type="Material" uid="uid://sx4nwkt36yrl" path="res://Environment/Shaders/Dirt.material" id="1_8guec"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_b2rdi"]
+[ext_resource type="Material" uid="uid://djolsb5gttpyw" path="res://Environment/Shaders/Stone.material" id="3_quhew"]
 
 [sub_resource type="Environment" id="Environment_8ooo3"]
 tonemap_mode = 3
@@ -54,4 +55,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 generator = SubResource("VoxelGeneratorNoise_aaaxj")
 mesher = SubResource("VoxelMesherTransvoxel_oa07p")
-material_override = ExtResource("1_8guec")
+material_override = ExtResource("3_quhew")
