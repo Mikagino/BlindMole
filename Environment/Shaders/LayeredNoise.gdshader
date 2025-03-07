@@ -25,7 +25,7 @@ float get_transvoxel_secondary_factor(int idata) {
 	// If the vertex lies on one or more sides, and at least one side has no low-resolution neighbor,
 	// don't move the vertex.
 	t *= float((vertex_border_mask & ~transition_mask) == 0);
-	
+
 	// Debugging
 	//t *= 0.5 + 0.5 * sin(TIME * 4.0);
 	//t *= 2.0;
@@ -70,12 +70,13 @@ void fragment(){
 	vec3 dirt = mix(baseColor, secondaryColor, 0.1);
 	dirt = dirt * piles;
 	ALBEDO = mix(stoneColor, dirt, stones);
-	
+
 	vec2 stoneNormal = vec2(dFdx(stones.r), dFdy(stones.r)) * 5.0;
 	vec2 dirtNormal = vec2(dFdx(secondaryColor.r), dFdy(secondaryColor.r)) * 5.0;
 	vec2 blackNormal = vec2(dFdx(piles.r), dFdy(piles.r)) * 15.0;
 	vec2 normal = stoneNormal + dirtNormal + blackNormal;
-	
+
     NORMAL = normalize(NORMAL - vec3(normal, 0.0));
-	ROUGHNESS = 0.8;
+	SPECULAR = 0.25;
+	ROUGHNESS = 0.75;
 }

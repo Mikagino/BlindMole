@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dv083x6jycj5e"]
+
+[ext_resource type="Script" path="res://Environment/Treasures/Crystal/RandomMesh.gd" id="1_3hps1"]
+[ext_resource type="PackedScene" uid="uid://c2iaueqsligoo" path="res://Environment/Treasures/Crystal/Crystal1.glb" id="2_htote"]
+[ext_resource type="PackedScene" uid="uid://iefsmin5s1wy" path="res://Environment/Treasures/Crystal/Crystal4.glb" id="4_64dhh"]
+[ext_resource type="PackedScene" uid="uid://k2ow508y3ja0" path="res://Environment/Treasures/Crystal/Crystal8.glb" id="5_pr2vt"]
+[ext_resource type="PackedScene" uid="uid://ssof4t0yfyqa" path="res://Environment/Treasures/Crystal/Crystal2.glb" id="7_v3vaa"]
+
+[node name="Crystal1" type="MeshInstance3D"]
+script = ExtResource("1_3hps1")
+
+[node name="Crystal1" parent="." instance=ExtResource("2_htote")]
+visible = false
+
+[node name="Crystal2" parent="." instance=ExtResource("7_v3vaa")]
+visible = false
+
+[node name="Crystal4" parent="." instance=ExtResource("4_64dhh")]
+visible = false
+
+[node name="Crystal8" parent="." instance=ExtResource("5_pr2vt")]

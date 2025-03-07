@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://5m2bn5mdholt"]
+[gd_scene load_steps=26 format=3 uid="uid://5m2bn5mdholt"]
 
 [ext_resource type="Material" uid="uid://sx4nwkt36yrl" path="res://Environment/Shaders/Dirt.material" id="1_8guec"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="1_b2rdi"]
-[ext_resource type="Material" uid="uid://djolsb5gttpyw" path="res://Environment/Shaders/Stone.material" id="3_quhew"]
+[ext_resource type="PackedScene" uid="uid://c2iaueqsligoo" path="res://Environment/Treasures/Crystal/Crystal1.glb" id="4_gmmna"]
+[ext_resource type="PackedScene" uid="uid://ssof4t0yfyqa" path="res://Environment/Treasures/Crystal/Crystal2.glb" id="5_5o4n2"]
+[ext_resource type="PackedScene" uid="uid://iefsmin5s1wy" path="res://Environment/Treasures/Crystal/Crystal4.glb" id="6_gbj62"]
+[ext_resource type="PackedScene" uid="uid://k2ow508y3ja0" path="res://Environment/Treasures/Crystal/Crystal8.glb" id="7_sfxvw"]
 
 [sub_resource type="Environment" id="Environment_8ooo3"]
 tonemap_mode = 3
@@ -17,33 +20,99 @@ fog_density = 0.0442
 volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1f046"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7j3f6"]
 noise_type = 3
 frequency = 0.1
 
 [sub_resource type="VoxelGeneratorNoise" id="VoxelGeneratorNoise_aaaxj"]
-noise = SubResource("FastNoiseLite_1f046")
+noise = SubResource("FastNoiseLite_7j3f6")
 height_start = -50.0
 height_range = 50.0
 
-[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_wh4ie"]
-texturing_mode = 1
-mesh_optimization_enabled = true
-
 [sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_oa07p"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3wclj"]
+frequency = 0.03
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_rbk5o"]
+density = 0.005
+noise = SubResource("FastNoiseLite_3wclj")
+
+[sub_resource type="BoxMesh" id="BoxMesh_f7lqj"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_fvpne"]
+generator = SubResource("VoxelInstanceGenerator_rbk5o")
+persistent = true
+scene = ExtResource("4_gmmna")
+mesh = SubResource("BoxMesh_f7lqj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2xsbn"]
+seed = 1
+frequency = 0.05
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_8wuca"]
+density = 0.005
+emit_mode = 1
+noise = SubResource("FastNoiseLite_2xsbn")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_43abo"]
+generator = SubResource("VoxelInstanceGenerator_8wuca")
+persistent = true
+scene = ExtResource("5_5o4n2")
+mesh = SubResource("BoxMesh_f7lqj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jntx6"]
+noise_type = 0
+seed = 2
+frequency = 0.001
+fractal_octaves = 4
+fractal_lacunarity = 0.385
+fractal_gain = 30.98
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_1kfie"]
+density = 0.003
+emit_mode = 1
+max_slope_degrees = 90.0
+noise = SubResource("FastNoiseLite_jntx6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_m7rle"]
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_cblua"]
+generator = SubResource("VoxelInstanceGenerator_1kfie")
+persistent = true
+scene = ExtResource("6_gbj62")
+mesh = SubResource("BoxMesh_m7rle")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q26m0"]
+noise_type = 0
+seed = 2
+frequency = 0.001
+fractal_octaves = 4
+fractal_lacunarity = 0.385
+fractal_gain = 30.98
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_vj8vj"]
+density = 0.001
+emit_mode = 1
+max_slope_degrees = 90.0
+noise = SubResource("FastNoiseLite_q26m0")
+
+[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_x8tji"]
+generator = SubResource("VoxelInstanceGenerator_vj8vj")
+persistent = true
+scene = ExtResource("7_sfxvw")
+mesh = SubResource("BoxMesh_m7rle")
+
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_828fs"]
+item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_fvpne")
+item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_43abo")
+item_3 = SubResource("VoxelInstanceLibraryMultiMeshItem_cblua")
+item_4 = SubResource("VoxelInstanceLibraryMultiMeshItem_x8tji")
 
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8ooo3")
-
-[node name="VoxelLodTerrain" type="VoxelLodTerrain" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.25266, 0)
-visible = false
-generator = SubResource("VoxelGeneratorNoise_aaaxj")
-mesher = SubResource("VoxelMesherTransvoxel_wh4ie")
-gi_mode = 2
-material = ExtResource("1_8guec")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.538991, 0.842311, 0, -0.842311, 0.538991, 0, 0, 0)
@@ -55,4 +124,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 generator = SubResource("VoxelGeneratorNoise_aaaxj")
 mesher = SubResource("VoxelMesherTransvoxel_oa07p")
-material_override = ExtResource("3_quhew")
+max_view_distance = 64
+material_override = ExtResource("1_8guec")
+
+[node name="CrystalInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
+library = SubResource("VoxelInstanceLibrary_828fs")
