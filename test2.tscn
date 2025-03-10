@@ -1,11 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://b2b8vtoxqg13b"]
+[gd_scene load_steps=12 format=3 uid="uid://b2b8vtoxqg13b"]
 
 [ext_resource type="Material" uid="uid://sx4nwkt36yrl" path="res://Environment/Shaders/Dirt.material" id="1_r43bw"]
-[ext_resource type="PackedScene" uid="uid://c2iaueqsligoo" path="res://Environment/Treasures/Crystal/Crystal1.glb" id="2_aigce"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="2_f30xh"]
-[ext_resource type="PackedScene" uid="uid://ssof4t0yfyqa" path="res://Environment/Treasures/Crystal/Crystal2.glb" id="3_pymde"]
-[ext_resource type="PackedScene" uid="uid://iefsmin5s1wy" path="res://Environment/Treasures/Crystal/Crystal4.glb" id="4_ag5q6"]
-[ext_resource type="PackedScene" uid="uid://k2ow508y3ja0" path="res://Environment/Treasures/Crystal/Crystal8.glb" id="5_rxynb"]
+[ext_resource type="PackedScene" uid="uid://dv083x6jycj5e" path="res://Environment/Treasures/Crystal/Crystal1.tscn" id="6_amaol"]
 
 [sub_resource type="Environment" id="Environment_wsukb"]
 tonemap_mode = 3
@@ -38,76 +35,13 @@ frequency = 0.03
 density = 0.005
 noise = SubResource("FastNoiseLite_646qo")
 
-[sub_resource type="BoxMesh" id="BoxMesh_6jkrx"]
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_01iit"]
+[sub_resource type="VoxelInstanceLibrarySceneItem" id="VoxelInstanceLibrarySceneItem_dc2fy"]
 generator = SubResource("VoxelInstanceGenerator_xh6o1")
 persistent = true
-scene = ExtResource("2_aigce")
-mesh = SubResource("BoxMesh_6jkrx")
+scene = ExtResource("6_amaol")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tks8f"]
-seed = 1
-frequency = 0.05
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_wq43g"]
-density = 0.005
-emit_mode = 1
-noise = SubResource("FastNoiseLite_tks8f")
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_0nv6v"]
-generator = SubResource("VoxelInstanceGenerator_wq43g")
-persistent = true
-scene = ExtResource("3_pymde")
-mesh = SubResource("BoxMesh_6jkrx")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0vuph"]
-noise_type = 0
-seed = 2
-frequency = 0.001
-fractal_octaves = 4
-fractal_lacunarity = 0.385
-fractal_gain = 30.98
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_sss6n"]
-density = 0.002
-emit_mode = 1
-max_slope_degrees = 90.0
-noise = SubResource("FastNoiseLite_0vuph")
-
-[sub_resource type="BoxMesh" id="BoxMesh_3i2hg"]
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_5uk6e"]
-generator = SubResource("VoxelInstanceGenerator_sss6n")
-persistent = true
-scene = ExtResource("4_ag5q6")
-mesh = SubResource("BoxMesh_3i2hg")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xoufw"]
-noise_type = 0
-seed = 2
-frequency = 0.001
-fractal_octaves = 4
-fractal_lacunarity = 0.385
-fractal_gain = 30.98
-
-[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_oi23i"]
-density = 0.001
-emit_mode = 1
-max_slope_degrees = 90.0
-noise = SubResource("FastNoiseLite_xoufw")
-
-[sub_resource type="VoxelInstanceLibraryMultiMeshItem" id="VoxelInstanceLibraryMultiMeshItem_er5o2"]
-generator = SubResource("VoxelInstanceGenerator_oi23i")
-persistent = true
-scene = ExtResource("5_rxynb")
-mesh = SubResource("BoxMesh_3i2hg")
-
-[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_jinu8"]
-item_1 = SubResource("VoxelInstanceLibraryMultiMeshItem_01iit")
-item_2 = SubResource("VoxelInstanceLibraryMultiMeshItem_0nv6v")
-item_3 = SubResource("VoxelInstanceLibraryMultiMeshItem_5uk6e")
-item_4 = SubResource("VoxelInstanceLibraryMultiMeshItem_er5o2")
+[sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_rpki5"]
+item_1 = SubResource("VoxelInstanceLibrarySceneItem_dc2fy")
 
 [node name="Node3D" type="Node3D"]
 
@@ -126,8 +60,8 @@ gi_mode = 2
 view_distance = 64
 material = ExtResource("1_r43bw")
 
-[node name="CrystalInstancer" type="VoxelInstancer" parent="VoxelLodTerrain"]
-library = SubResource("VoxelInstanceLibrary_jinu8")
+[node name="CrystalInstancer2" type="VoxelInstancer" parent="VoxelLodTerrain"]
+library = SubResource("VoxelInstanceLibrary_rpki5")
 
 [node name="Player" parent="." instance=ExtResource("2_f30xh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)

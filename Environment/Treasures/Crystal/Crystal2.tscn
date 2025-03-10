@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcxwfjh8478o3"]
+
+[ext_resource type="PackedScene" uid="uid://ssof4t0yfyqa" path="res://Environment/Treasures/Crystal/Crystal2.glb" id="1_cc6c0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6p1tt"]
+radius = 0.869568
+
+[node name="Crystal2" type="Area3D" groups=["Crystal"]]
+collision_layer = 3
+collision_mask = 3
+input_ray_pickable = false
+
+[node name="Crystal2" parent="." instance=ExtResource("1_cc6c0")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0896932, 0.420338, 0.0405502)
+shape = SubResource("SphereShape3D_6p1tt")

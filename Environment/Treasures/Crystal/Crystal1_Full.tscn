@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqfagtbcg0xve"]
+
+[ext_resource type="PackedScene" uid="uid://c2iaueqsligoo" path="res://Environment/Treasures/Crystal/Crystal1.glb" id="1_khssy"]
+[ext_resource type="AudioStream" uid="uid://dce7usya43p3h" path="res://Environment/Treasures/Crystal/fairy_sound-6469.mp3" id="2_8wg7d"]
+
+[node name="Crystal1Full" type="Node3D"]
+
+[node name="Crystal1" parent="." instance=ExtResource("1_khssy")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_8wg7d")
+volume_db = -10.0
+unit_size = 15.0
+autoplay = true
+parameters/looping = true
