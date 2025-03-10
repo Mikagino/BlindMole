@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgpjxoygnvyy4"]
+[gd_scene load_steps=8 format=3 uid="uid://dgpjxoygnvyy4"]
 
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/Player.gd" id="1_1fhis"]
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/ability_grab.gd" id="2_gwqkd"]
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/TreasureAudioArea.gd" id="3_n1j83"]
 [ext_resource type="AudioStream" uid="uid://dce7usya43p3h" path="res://Environment/Treasures/Crystal/fairy_sound-6469.mp3" id="4_eueag"]
+[ext_resource type="PackedScene" uid="uid://d4nguiqivbkbl" path="res://TreasureAudioSource.tscn" id="5_3jphr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euj4i"]
 
@@ -52,49 +53,37 @@ current = true
 [node name="VoxelViewer" type="VoxelViewer" parent="."]
 requires_visuals = false
 
-[node name="SpatialAudio_Area3D" type="Area3D" parent="." node_paths=PackedStringArray("audioPlayers")]
+[node name="SpatialAudio_Area3D" type="Area3D" parent="." node_paths=PackedStringArray("audioPlayers", "playerRaycast")]
 collision_layer = 2
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("3_n1j83")
-audioPlayers = [NodePath("../SpatialAudioPlayers/AudioStreamPlayer3D"), NodePath("../SpatialAudioPlayers/AudioStreamPlayer3D2"), NodePath("../SpatialAudioPlayers/AudioStreamPlayer3D3"), NodePath("../SpatialAudioPlayers/AudioStreamPlayer3D4"), NodePath("../SpatialAudioPlayers/AudioStreamPlayer3D5")]
+audioPlayers = [NodePath("../SpatialAudioPlayers/TreasureAudioSource"), NodePath("../SpatialAudioPlayers/TreasureAudioSource2"), NodePath("../SpatialAudioPlayers/TreasureAudioSource3"), NodePath("../SpatialAudioPlayers/TreasureAudioSource4"), NodePath("../SpatialAudioPlayers/TreasureAudioSource5")]
 crystalAudio = ExtResource("4_eueag")
 crystalGroup = "Crystal"
+playerRaycast = NodePath("RayCast3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpatialAudio_Area3D"]
 shape = SubResource("SphereShape3D_4wewn")
 
+[node name="RayCast3D" type="RayCast3D" parent="SpatialAudio_Area3D"]
+
 [node name="SpatialAudioPlayers" type="Node" parent="."]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SpatialAudioPlayers"]
-attenuation_model = 3
-volume_db = -4.0
-unit_size = 20.0
-max_distance = 15.0
+[node name="TreasureAudioSource" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
+bus = &"Treasure1"
 
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="SpatialAudioPlayers"]
-attenuation_model = 3
-volume_db = -4.0
-unit_size = 20.0
-max_distance = 15.0
+[node name="TreasureAudioSource2" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
+bus = &"Treasure2"
 
-[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="SpatialAudioPlayers"]
-attenuation_model = 3
-volume_db = -4.0
-unit_size = 20.0
-max_distance = 15.0
+[node name="TreasureAudioSource3" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
+bus = &"Treasure3"
 
-[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="SpatialAudioPlayers"]
-attenuation_model = 3
-volume_db = -4.0
-unit_size = 20.0
-max_distance = 15.0
+[node name="TreasureAudioSource4" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
+bus = &"Treasure4"
 
-[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="SpatialAudioPlayers"]
-attenuation_model = 3
-volume_db = -4.0
-unit_size = 20.0
-max_distance = 15.0
+[node name="TreasureAudioSource5" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
+bus = &"Treasure5"
 
 [connection signal="area_entered" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="SetupAudioPlayer"]
 [connection signal="area_exited" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="RemoveAudioPlayer"]

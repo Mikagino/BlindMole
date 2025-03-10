@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://mxgyj330c3tp"]
+[gd_scene load_steps=7 format=3 uid="uid://mxgyj330c3tp"]
 
 [ext_resource type="PackedScene" uid="uid://dv083x6jycj5e" path="res://Environment/Treasures/Crystal/Crystal1.tscn" id="1_gpniy"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="2_6w5tb"]
@@ -9,19 +9,19 @@ size = Vector2(20, 20)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrnyj"]
 size = Vector3(20, 1, 20)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oxf4g"]
+size = Vector3(5, 2, 3)
+
 [sub_resource type="BoxMesh" id="BoxMesh_0mv7j"]
-size = Vector3(1, 2, 3)
+size = Vector3(5, 2, 3)
 
 [node name="SpatialAudioTest" type="Node3D"]
 
 [node name="Crystal1" parent="." instance=ExtResource("1_gpniy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88145, 0, -7.34063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0482, 0, -21.5301)
 
 [node name="Crystal2" parent="." instance=ExtResource("1_gpniy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88145, 0, 8.06382)
-
-[node name="Crystal3" parent="." instance=ExtResource("1_gpniy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.91387, 0, 7.44338)
 
 [node name="Player" parent="." instance=ExtResource("2_6w5tb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
@@ -38,11 +38,11 @@ shape = SubResource("BoxShape3D_xrnyj")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99481, 1, 7.432)
+shape = SubResource("BoxShape3D_oxf4g")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.58, 1, 7.432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99481, 1, 7.432)
 mesh = SubResource("BoxMesh_0mv7j")
 skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_xrnyj")

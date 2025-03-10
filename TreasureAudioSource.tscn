@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d4nguiqivbkbl"]
+
+[node name="TreasureAudioSource" type="AudioStreamPlayer3D"]
+attenuation_model = 3
+unit_size = 20.0
+max_distance = 15.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 0)
