@@ -125,6 +125,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
 generator = SubResource("VoxelGeneratorNoise_aaaxj")
 mesher = SubResource("VoxelMesherTransvoxel_oa07p")
 max_view_distance = 64
+collision_layer = 4
 material_override = ExtResource("1_8guec")
 
 [node name="CrystalInstancer" type="VoxelInstancer" parent="VoxelTerrain"]

@@ -9,10 +9,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euj4i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4wewn"]
-radius = 15.0
+radius = 10.0
 
 [node name="Player" type="CharacterBody3D"]
 disable_mode = 2
+collision_mask = 7
 floor_max_angle = 0.802851
 script = ExtResource("1_1fhis")
 
@@ -54,7 +55,7 @@ current = true
 requires_visuals = false
 
 [node name="SpatialAudio_Area3D" type="Area3D" parent="." node_paths=PackedStringArray("audioPlayers", "playerRaycast")]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 2
 input_ray_pickable = false
 script = ExtResource("3_n1j83")
@@ -67,6 +68,10 @@ playerRaycast = NodePath("RayCast3D")
 shape = SubResource("SphereShape3D_4wewn")
 
 [node name="RayCast3D" type="RayCast3D" parent="SpatialAudio_Area3D"]
+target_position = Vector3(0, 0, 0)
+collision_mask = 4
+debug_shape_custom_color = Color(1, 1, 1, 1)
+debug_shape_thickness = 5
 
 [node name="SpatialAudioPlayers" type="Node" parent="."]
 
