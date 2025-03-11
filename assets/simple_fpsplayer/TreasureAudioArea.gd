@@ -13,11 +13,11 @@ func _ready() -> void:
 		inactivePlayers.append(player);
 
 func _process(delta):
-	#if(wrap(delta, 0, 1) > 0.1): return;
+	pass;
+
+func UpdateObstruction():
 	for treasure in treasures:
 		CheckObstruction(treasure);
-	# for kek in audioPlayers:
-	# 	print(kek.name, kek.global_position);
 
 # only crystal so far
 func SetupAudioPlayer(treasure: Area3D) -> void:
@@ -47,7 +47,6 @@ func CheckObstruction(treasure: Area3D):
 	playerRaycast.force_raycast_update();
 
 	var isObstructed: bool = treasureRaycast.is_colliding() && playerRaycast.is_colliding();
-	print(" ## tr col: ", treasureRaycast.is_colliding(), " ## pl col:", playerRaycast.is_colliding());
 	AudioServer.set_bus_effect_enabled(GetTreasureBusIndex(treasure), 0, isObstructed);
 	if not isObstructed:
 		return;
@@ -55,11 +54,9 @@ func CheckObstruction(treasure: Area3D):
 	var treasurePoint: Vector3 = treasureRaycast.get_collision_point();
 	var playerPoint: Vector3 = playerRaycast.get_collision_point();
 	var depth = treasurePoint.distance_to(playerPoint);
-	print("depth:", depth);
 
 	var effect: AudioEffectLowPassFilter = GetTreasureLowpass(treasure);
 	effect.cutoff_hz = CalculateCutoffFromDepth(depth);
-	print("cutoff: ", effect.cutoff_hz);
 
 func GetTreasureBusIndex(treasure: Area3D) -> int:
 	var busName: StringName = GetTreasureSoundSource(treasure).bus;
@@ -67,15 +64,13 @@ func GetTreasureBusIndex(treasure: Area3D) -> int:
 
 func GetTreasureLowpass(treasure: Area3D) -> AudioEffectLowPassFilter:
 	var busIndex = GetTreasureBusIndex(treasure);
-	print("busIndex:", busIndex);
 	return AudioServer.get_bus_effect(busIndex, 0);
 
 func CalculateCutoffFromDepth(depth: float) -> float:
 	return -100 * depth + 2500;
-	#return 1100.0 * pow(-depth+10.0, 1.0/3.0);
+	#return 1100.0 * pow(-depth+10.0, 1.0/3.0); # alt but not so good function
 
 func RemoveAudioPlayer(treasure: Area3D) -> void:
-	print(treasure.name, " stop");
 	var audioPlayer: AudioStreamPlayer3D = GetTreasureSoundSource(treasure);
 	if(audioPlayer == null): return;
 	audioPlayer.stop();
@@ -85,7 +80,6 @@ func RemoveAudioPlayer(treasure: Area3D) -> void:
 func GetTreasureSoundSource(treasure: Area3D) -> AudioStreamPlayer3D:
 	for audioPlayer in audioPlayers:
 		var distance = audioPlayer.global_position.distance_to(treasure.global_position);
-		#print("distance:", distance)
 		if(distance < 0.1):
 			return audioPlayer;
 	return null;

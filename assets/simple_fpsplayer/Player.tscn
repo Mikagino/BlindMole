@@ -75,6 +75,10 @@ debug_shape_thickness = 5
 
 [node name="SpatialAudioPlayers" type="Node" parent="."]
 
+[node name="ObstructionCheckTimer" type="Timer" parent="SpatialAudioPlayers"]
+wait_time = 0.05
+autostart = true
+
 [node name="TreasureAudioSource" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
 bus = &"Treasure1"
 
@@ -92,3 +96,4 @@ bus = &"Treasure5"
 
 [connection signal="area_entered" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="SetupAudioPlayer"]
 [connection signal="area_exited" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="RemoveAudioPlayer"]
+[connection signal="timeout" from="SpatialAudioPlayers/ObstructionCheckTimer" to="SpatialAudio_Area3D" method="UpdateObstruction"]
