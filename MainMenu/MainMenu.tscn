@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://dq0oqe222c6su"]
+
+[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_r40en"]
+[ext_resource type="Texture2D" uid="uid://fp7u35s1krjr" path="res://MainMenu/MainMenuBG.jpg" id="1_vd3gs"]
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="3_b2ba5"]
+[ext_resource type="PackedScene" uid="uid://h0jofikqqv8r" path="res://MainMenu/OptionsMenu/OptionsPanel.tscn" id="4_fkqqa"]
+
+[sub_resource type="SystemFont" id="SystemFont_20glv"]
+font_names = PackedStringArray("Bobcat", "BolsterBold")
+
+[sub_resource type="LabelSettings" id="LabelSettings_20uhg"]
+font = SubResource("SystemFont_20glv")
+font_size = 120
+shadow_size = 15
+shadow_color = Color(0.549099, 0.274643, 0.00214721, 0.592157)
+shadow_offset = Vector2(5, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r40en")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vd3gs")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+z_index = 1470
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+
+[node name="TitleLabel" type="Label" parent="HBoxContainer/TitleMarginContainer"]
+layout_mode = 2
+text = "Blind Mole"
+label_settings = SubResource("LabelSettings_20uhg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ButtonsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NewGameButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("3_b2ba5")
+text = "New Game"
+
+[node name="OptionsButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("3_b2ba5")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("3_b2ba5")
+text = "Exit"
+
+[node name="OptionsPanel" parent="." instance=ExtResource("4_fkqqa")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="HBoxContainer/ButtonsMarginContainer/VBoxContainer/OptionsButton" to="OptionsPanel" method="Open"]
+[connection signal="pressed" from="HBoxContainer/ButtonsMarginContainer/VBoxContainer/ExitButton" to="." method="Exit"]

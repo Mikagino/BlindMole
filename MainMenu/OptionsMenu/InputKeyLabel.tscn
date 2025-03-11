@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://fsfi52ms4ekk"]
+
+[ext_resource type="Script" path="res://MainMenu/InputKeyLabel.gd" id="1_ftb51"]
+[ext_resource type="SystemFont" uid="uid://bkjdxfbnf8mgq" path="res://MainMenu/ButtonFont.tres" id="2_yv35o"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pb5ca"]
+font = ExtResource("2_yv35o")
+font_size = 20
+
+[node name="InputKeyLabel" type="HBoxContainer" node_paths=PackedStringArray("nameLabel", "keyLabel")]
+script = ExtResource("1_ftb51")
+nameLabel = NodePath("Name")
+keyLabel = NodePath("Key")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_pb5ca")
+
+[node name="Key" type="Label" parent="."]
+layout_mode = 2
+text = "Key"

@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://h0jofikqqv8r"]
+
+[ext_resource type="Script" path="res://MainMenu/Options.gd" id="1_05k03"]
+[ext_resource type="PackedScene" uid="uid://fsfi52ms4ekk" path="res://MainMenu/OptionsMenu/InputKeyLabel.tscn" id="2_bvtnp"]
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="3_ky6pb"]
+[ext_resource type="PackedScene" uid="uid://dy1ht81k63mbq" path="res://MainMenu/OptionsMenu/VolumeSlider.tscn" id="4_5obxg"]
+[ext_resource type="PackedScene" uid="uid://d4ditunolx1gx" path="res://MainMenu/OptionsMenu/CloseButton.tscn" id="5_fpgwa"]
+
+[node name="OptionsPanel" type="Panel" node_paths=PackedStringArray("masterAudioSlider", "treasureAudioSlider")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_05k03")
+masterAudioSlider = NodePath("TabContainer/Sound/VBoxContainer/MasterVolumeSlider/HSlider")
+treasureAudioSlider = NodePath("TabContainer/Sound/VBoxContainer/TreasuresVolumeSlider/HSlider")
+inputKeyLabel = ExtResource("2_bvtnp")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ky6pb")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Sound" type="Control" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_right = 152.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="MasterVolumeSlider" parent="TabContainer/Sound/VBoxContainer" instance=ExtResource("4_5obxg")]
+layout_mode = 2
+
+[node name="TreasuresVolumeSlider" parent="TabContainer/Sound/VBoxContainer" instance=ExtResource("4_5obxg")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Sound/VBoxContainer/TreasuresVolumeSlider" index="0"]
+text = "Treasures"
+
+[node name="CloseButton" parent="TabContainer/Sound" instance=ExtResource("5_fpgwa")]
+layout_mode = 1
+offset_left = -80.0
+offset_top = -39.0
+
+[node name="Controls" type="Control" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer/Controls"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="CloseButton2" parent="TabContainer/Controls" instance=ExtResource("5_fpgwa")]
+layout_mode = 1
+offset_left = -80.0
+offset_top = -39.0
+
+[connection signal="gui_input" from="." to="." method="ClickedOutside"]
+[connection signal="pressed" from="TabContainer/Sound/CloseButton" to="." method="Close"]
+[connection signal="pressed" from="TabContainer/Controls/CloseButton2" to="." method="Close"]
+
+[editable path="TabContainer/Sound/VBoxContainer/MasterVolumeSlider"]
+[editable path="TabContainer/Sound/VBoxContainer/TreasuresVolumeSlider"]

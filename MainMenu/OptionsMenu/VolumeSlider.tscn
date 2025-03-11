@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy1ht81k63mbq"]
+
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="1_lkskj"]
+
+[node name="VolumeSlider" type="HBoxContainer"]
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme = ExtResource("1_lkskj")
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = -16.0
+max_value = 6.0
+rounded = true
