@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq0oqe222c6su"]
+[gd_scene load_steps=8 format=3 uid="uid://dq0oqe222c6su"]
 
 [ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_r40en"]
 [ext_resource type="Texture2D" uid="uid://fp7u35s1krjr" path="res://MainMenu/MainMenuBG.jpg" id="1_vd3gs"]
+[ext_resource type="PackedScene" uid="uid://b2b8vtoxqg13b" path="res://test2.tscn" id="2_xq5jf"]
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="3_b2ba5"]
 [ext_resource type="PackedScene" uid="uid://h0jofikqqv8r" path="res://MainMenu/OptionsMenu/OptionsPanel.tscn" id="4_fkqqa"]
 
@@ -23,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r40en")
+gameScene = ExtResource("2_xq5jf")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -68,14 +70,14 @@ theme_override_constants/margin_top = 0
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="NewGameButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
+[node name="PlayButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 theme = ExtResource("3_b2ba5")
-text = "New Game"
+text = "Play"
 
 [node name="OptionsButton" type="Button" parent="HBoxContainer/ButtonsMarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 100)
@@ -99,5 +101,6 @@ text = "Exit"
 visible = false
 layout_mode = 1
 
+[connection signal="pressed" from="HBoxContainer/ButtonsMarginContainer/VBoxContainer/PlayButton" to="." method="NewGame"]
 [connection signal="pressed" from="HBoxContainer/ButtonsMarginContainer/VBoxContainer/OptionsButton" to="OptionsPanel" method="Open"]
 [connection signal="pressed" from="HBoxContainer/ButtonsMarginContainer/VBoxContainer/ExitButton" to="." method="Exit"]
