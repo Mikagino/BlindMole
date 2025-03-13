@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdq3pp5xg6al5"]
+
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_f6348"]
+[ext_resource type="Script" path="res://Menus/Crafting/ItemButton.gd" id="2_w5w6a"]
+[ext_resource type="Texture2D" uid="uid://g40clsj0nnjt" path="res://icon.svg" id="3_xx8eu"]
+
+[node name="ItemButton" type="Button" node_paths=PackedStringArray("textureRect")]
+custom_minimum_size = Vector2(100, 100)
+theme = ExtResource("1_f6348")
+script = ExtResource("2_w5w6a")
+textureRect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xx8eu")
+expand_mode = 1

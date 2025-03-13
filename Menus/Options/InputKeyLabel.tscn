@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fsfi52ms4ekk"]
 
-[ext_resource type="Script" path="res://MainMenu/InputKeyLabel.gd" id="1_ftb51"]
-[ext_resource type="SystemFont" uid="uid://bkjdxfbnf8mgq" path="res://MainMenu/ButtonFont.tres" id="2_yv35o"]
+[ext_resource type="Script" path="res://Menus/InputKeyLabel.gd" id="1_ftb51"]
+[ext_resource type="SystemFont" uid="uid://bkjdxfbnf8mgq" path="res://Menus/ButtonFont.tres" id="2_yv35o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pb5ca"]
 font = ExtResource("2_yv35o")

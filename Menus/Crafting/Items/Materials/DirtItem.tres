@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c2yhay64sg8uw"]
+
+[ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="1_c1jy6"]
+
+[resource]
+script = ExtResource("1_c1jy6")
+itemName = "Dirt"
+description = "It surrounds you..."
+craftingInput = Array[ExtResource("1_c1jy6")]([])
+inputCount = Array[int]([])

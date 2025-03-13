@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq0oqe222c6su"]
 
-[ext_resource type="Script" path="res://MainMenu/MainMenu.gd" id="1_r40en"]
-[ext_resource type="Texture2D" uid="uid://fp7u35s1krjr" path="res://MainMenu/MainMenuBG.jpg" id="1_vd3gs"]
+[ext_resource type="Script" path="res://Menus/Main/MainMenu.gd" id="1_r40en"]
+[ext_resource type="Texture2D" uid="uid://fp7u35s1krjr" path="res://Menus/Main/MainMenuBG.jpg" id="1_vd3gs"]
 [ext_resource type="PackedScene" uid="uid://b2b8vtoxqg13b" path="res://test2.tscn" id="2_xq5jf"]
-[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="3_b2ba5"]
-[ext_resource type="PackedScene" uid="uid://h0jofikqqv8r" path="res://MainMenu/OptionsMenu/OptionsPanel.tscn" id="4_fkqqa"]
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="3_b2ba5"]
+[ext_resource type="PackedScene" uid="uid://h0jofikqqv8r" path="res://Menus/Options/OptionsPanel.tscn" id="4_fkqqa"]
 
 [sub_resource type="SystemFont" id="SystemFont_20glv"]
 font_names = PackedStringArray("Bobcat", "BolsterBold")

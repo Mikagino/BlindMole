@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fp7u35s1krjr"
-path="res://.godot/imported/MainMenuBG.jpg-e6fce166e9612d44b198705be679bd9c.ctex"
+uid="uid://b5aawwk5ffpdl"
+path="res://.godot/imported/Arrow.png-133dd39e76375b694b318a7240ab2199.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/MainMenuBG.jpg"
-dest_files=["res://.godot/imported/MainMenuBG.jpg-e6fce166e9612d44b198705be679bd9c.ctex"]
+source_file="res://Menus/Crafting/Arrow.png"
+dest_files=["res://.godot/imported/Arrow.png-133dd39e76375b694b318a7240ab2199.ctex"]
 
 [params]
 

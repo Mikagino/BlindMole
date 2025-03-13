@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dy1ht81k63mbq"]
 
-[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="1_lkskj"]
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_lkskj"]
 
 [node name="VolumeSlider" type="HBoxContainer"]
 

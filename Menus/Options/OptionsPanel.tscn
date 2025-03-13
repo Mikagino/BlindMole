@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://h0jofikqqv8r"]
 
-[ext_resource type="Script" path="res://MainMenu/Options.gd" id="1_05k03"]
-[ext_resource type="PackedScene" uid="uid://fsfi52ms4ekk" path="res://MainMenu/OptionsMenu/InputKeyLabel.tscn" id="2_bvtnp"]
-[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://MainMenu/Menu.theme" id="3_ky6pb"]
-[ext_resource type="PackedScene" uid="uid://dy1ht81k63mbq" path="res://MainMenu/OptionsMenu/VolumeSlider.tscn" id="4_5obxg"]
-[ext_resource type="PackedScene" uid="uid://d4ditunolx1gx" path="res://MainMenu/OptionsMenu/CloseButton.tscn" id="5_fpgwa"]
+[ext_resource type="Script" path="res://Menus/Options/Options.gd" id="1_05k03"]
+[ext_resource type="PackedScene" uid="uid://fsfi52ms4ekk" path="res://Menus/Options/InputKeyLabel.tscn" id="2_bvtnp"]
+[ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="3_ky6pb"]
+[ext_resource type="PackedScene" uid="uid://dy1ht81k63mbq" path="res://Menus/Options/VolumeSlider.tscn" id="4_5obxg"]
+[ext_resource type="PackedScene" uid="uid://d4ditunolx1gx" path="res://Menus/Options/CloseButton.tscn" id="5_fpgwa"]
 
 [node name="OptionsPanel" type="Panel" node_paths=PackedStringArray("masterAudioSlider", "treasureAudioSlider")]
 anchors_preset = 15

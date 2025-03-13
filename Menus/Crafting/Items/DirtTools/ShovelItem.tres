@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bsqjbjshroed4"]
+
+[ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="1_gr5iw"]
+
+[resource]
+script = ExtResource("1_gr5iw")
+itemName = "Shovel"
+description = "Made for digging"
+craftingInput = Array[ExtResource("1_gr5iw")]([null, null])
+inputCount = Array[int]([])
