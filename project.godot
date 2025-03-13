@@ -22,6 +22,7 @@ project/assembly_name="BlindMole"
 [global_group]
 
 Crystal=""
+Stromstein=""
 
 [input]
 

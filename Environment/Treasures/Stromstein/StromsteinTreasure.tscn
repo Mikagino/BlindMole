@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0i1pd4mox5ko"]
+
+[ext_resource type="PackedScene" uid="uid://cyq7avvleyjr1" path="res://Environment/Treasures/Stromstein/Stromstein.glb" id="1_eqkml"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_a8g5r"]
+radius = 0.556151
+
+[node name="StromsteinTreasure" type="StaticBody3D" groups=["Stromstein"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Stromstein" parent="." instance=ExtResource("1_eqkml")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Stromstein"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.292673, 0)
+shape = SubResource("SphereShape3D_a8g5r")

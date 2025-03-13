@@ -4,9 +4,11 @@ extends Area3D
 var inactivePlayers: Array[AudioStreamPlayer3D];
 @export var crystalAudio: AudioStream;
 @export var crystalGroup: String;
+@export var stromsteinAudio: AudioStream;
+@export var stromsteinGroup: String;
 @export var playerRaycast: RayCast3D;
 
-var treasures: Array[Area3D];
+var treasures: Array[Node3D];
 
 func _ready() -> void:
 	for player in audioPlayers:
@@ -20,18 +22,20 @@ func UpdateObstruction():
 		CheckObstruction(treasure);
 
 # only crystal so far
-func SetupAudioPlayer(treasure: Area3D) -> void:
+func SetupAudioPlayer(treasure: Node3D) -> void:
 	if(inactivePlayers.size() == 0):
 		return;
 	var audioPlayer: AudioStreamPlayer3D = inactivePlayers.pop_front();
 	audioPlayer.global_position = treasure.global_position;
 	
 	if(treasure.is_in_group(crystalGroup)):
-		audioPlayer.stream = crystalAudio;
+		audioPlayer.stream = crystalAudio
+	elif(treasure.is_in_group(stromsteinGroup)):
+		audioPlayer.stream = stromsteinAudio;
 	audioPlayer.play();
 	treasures.append(treasure);
 
-func CheckObstruction(treasure: Area3D):
+func CheckObstruction(treasure: Node3D):
 	var soundSource : AudioStreamPlayer3D = GetTreasureSoundSource(treasure);
 	if(soundSource == null):
 		print("No sound source found...");
@@ -58,11 +62,11 @@ func CheckObstruction(treasure: Area3D):
 	var effect: AudioEffectLowPassFilter = GetTreasureLowpass(treasure);
 	effect.cutoff_hz = CalculateCutoffFromDepth(depth);
 
-func GetTreasureBusIndex(treasure: Area3D) -> int:
+func GetTreasureBusIndex(treasure: Node3D) -> int:
 	var busName: StringName = GetTreasureSoundSource(treasure).bus;
 	return AudioServer.get_bus_index(busName);
 
-func GetTreasureLowpass(treasure: Area3D) -> AudioEffectLowPassFilter:
+func GetTreasureLowpass(treasure: Node3D) -> AudioEffectLowPassFilter:
 	var busIndex = GetTreasureBusIndex(treasure);
 	return AudioServer.get_bus_effect(busIndex, 0);
 
@@ -70,14 +74,14 @@ func CalculateCutoffFromDepth(depth: float) -> float:
 	return -100 * depth + 2500;
 	#return 1100.0 * pow(-depth+10.0, 1.0/3.0); # alt but not so good function
 
-func RemoveAudioPlayer(treasure: Area3D) -> void:
+func RemoveAudioPlayer(treasure: Node3D) -> void:
 	var audioPlayer: AudioStreamPlayer3D = GetTreasureSoundSource(treasure);
 	if(audioPlayer == null): return;
 	audioPlayer.stop();
 	inactivePlayers.append(audioPlayer);
 	treasures.remove_at(treasures.find(treasure));
 
-func GetTreasureSoundSource(treasure: Area3D) -> AudioStreamPlayer3D:
+func GetTreasureSoundSource(treasure: Node3D) -> AudioStreamPlayer3D:
 	for audioPlayer in audioPlayers:
 		var distance = audioPlayer.global_position.distance_to(treasure.global_position);
 		if(distance < 0.1):

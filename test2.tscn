@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2b8vtoxqg13b"]
+[gd_scene load_steps=16 format=3 uid="uid://b2b8vtoxqg13b"]
 
 [ext_resource type="Material" uid="uid://sx4nwkt36yrl" path="res://Environment/Shaders/Dirt.material" id="1_r43bw"]
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="2_f30xh"]
+[ext_resource type="PackedScene" uid="uid://c0i1pd4mox5ko" path="res://Environment/Treasures/Stromstein/StromsteinTreasure.tscn" id="3_1vabp"]
 [ext_resource type="PackedScene" uid="uid://dv083x6jycj5e" path="res://Environment/Treasures/Crystal/Crystal1.tscn" id="6_amaol"]
 
 [sub_resource type="Environment" id="Environment_wsukb"]
@@ -40,8 +41,21 @@ generator = SubResource("VoxelInstanceGenerator_xh6o1")
 persistent = true
 scene = ExtResource("6_amaol")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w6y1b"]
+frequency = 0.03
+
+[sub_resource type="VoxelInstanceGenerator" id="VoxelInstanceGenerator_etw6q"]
+density = 0.001
+emit_mode = 1
+noise = SubResource("FastNoiseLite_w6y1b")
+
+[sub_resource type="VoxelInstanceLibrarySceneItem" id="VoxelInstanceLibrarySceneItem_iarqu"]
+generator = SubResource("VoxelInstanceGenerator_etw6q")
+scene = ExtResource("3_1vabp")
+
 [sub_resource type="VoxelInstanceLibrary" id="VoxelInstanceLibrary_rpki5"]
 item_1 = SubResource("VoxelInstanceLibrarySceneItem_dc2fy")
+item_2 = SubResource("VoxelInstanceLibrarySceneItem_iarqu")
 
 [node name="Node3D" type="Node3D"]
 

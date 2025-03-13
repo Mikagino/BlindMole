@@ -2,7 +2,7 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_jl1gu"]
 resource_name = "Reverb"
-room_size = 1.0
+room_size = 0.25
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_25n1t"]
 resource_name = "LowPassFilter"
@@ -31,7 +31,7 @@ bus/1/name = &"TreasuresMaster"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 0.0
+bus/1/volume_db = -4.00569
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectReverb_jl1gu")
 bus/1/effect/0/enabled = true
