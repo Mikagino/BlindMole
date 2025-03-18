@@ -1,18 +1,24 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://bsqjbjshroed4"]
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://bsqjbjshroed4"]
 
 [ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="1_gr5iw"]
 [ext_resource type="Script" path="res://Menus/Crafting/CraftingInput.gd" id="1_slw6r"]
 [ext_resource type="Resource" uid="uid://bxukuicaakin3" path="res://Menus/Crafting/Items/Materials/WoodItem.tres" id="2_4l11h"]
-[ext_resource type="Texture2D" uid="uid://cx0ye8gbus27h" path="res://Environment/Treasures/Stromstein/Stromstein1k_albedo.jpg" id="3_ajeph"]
+[ext_resource type="Resource" uid="uid://dmyi4kfsmce3p" path="res://Menus/Crafting/Items/Materials/MetalItem.tres" id="3_kwn6k"]
+[ext_resource type="Texture2D" uid="uid://d37phw8o20d0r" path="res://Menus/Crafting/Items/DirtTools/Shovel.png" id="4_sob4t"]
 
 [sub_resource type="Resource" id="Resource_ihqt3"]
 script = ExtResource("1_slw6r")
 item = ExtResource("2_4l11h")
+count = 2
+
+[sub_resource type="Resource" id="Resource_mqgjh"]
+script = ExtResource("1_slw6r")
+item = ExtResource("3_kwn6k")
 count = 1
 
 [resource]
 script = ExtResource("1_gr5iw")
 itemName = "Shovel"
 description = "Made for digging"
-icon = ExtResource("3_ajeph")
-craftingInput = Array[ExtResource("1_slw6r")]([SubResource("Resource_ihqt3")])
+icon = ExtResource("4_sob4t")
+craftingInput = Array[ExtResource("1_slw6r")]([SubResource("Resource_ihqt3"), SubResource("Resource_mqgjh")])

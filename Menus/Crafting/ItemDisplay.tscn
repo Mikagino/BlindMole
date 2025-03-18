@@ -20,8 +20,12 @@ label = NodePath("MarginContainer/Label")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_right = 17.0
-offset_bottom = 19.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -25.0
+offset_bottom = 23.0
+grow_horizontal = 0
 
 [node name="Label" type="Label" parent="MarginContainer"]
 custom_minimum_size = Vector2(25, 0)

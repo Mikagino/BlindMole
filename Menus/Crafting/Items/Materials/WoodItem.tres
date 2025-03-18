@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bxukuicaakin3"]
 
 [ext_resource type="Script" path="res://Menus/Crafting/CraftingInput.gd" id="1_781gg"]
-[ext_resource type="Texture2D" uid="uid://bx0umnlsf00gm" path="res://Environment/Treasures/Stromstein/Stromstein1k_alpha.jpg" id="2_kuagi"]
+[ext_resource type="Texture2D" uid="uid://5cbk13q7k7b1" path="res://Menus/Crafting/Items/Materials/Wood.png" id="2_h02o0"]
 [ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="3_3q4i3"]
 
 [resource]
 script = ExtResource("3_3q4i3")
 itemName = "Wood"
 description = "Roots from plants of the overworld..."
-icon = ExtResource("2_kuagi")
+icon = ExtResource("2_h02o0")
 craftingInput = Array[ExtResource("1_781gg")]([])

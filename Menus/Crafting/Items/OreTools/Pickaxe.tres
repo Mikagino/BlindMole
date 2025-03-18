@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Item" load_steps=8 format=3 uid="uid://dt5vkoddhsxv2"]
+
+[ext_resource type="Script" path="res://Menus/Crafting/CraftingInput.gd" id="1_xl55u"]
+[ext_resource type="Resource" uid="uid://bxukuicaakin3" path="res://Menus/Crafting/Items/Materials/WoodItem.tres" id="2_40fuw"]
+[ext_resource type="Resource" uid="uid://dmyi4kfsmce3p" path="res://Menus/Crafting/Items/Materials/MetalItem.tres" id="3_burnr"]
+[ext_resource type="Texture2D" uid="uid://bfpcbxuduwarr" path="res://Menus/Crafting/Items/OreTools/Pickaxe.png" id="4_8ehkw"]
+[ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="5_kvt07"]
+
+[sub_resource type="Resource" id="Resource_ihqt3"]
+script = ExtResource("1_xl55u")
+item = ExtResource("2_40fuw")
+count = 2
+
+[sub_resource type="Resource" id="Resource_mqgjh"]
+script = ExtResource("1_xl55u")
+item = ExtResource("3_burnr")
+count = 3
+
+[resource]
+script = ExtResource("5_kvt07")
+itemName = "Pickaxe"
+description = "Hit. The. Stone."
+icon = ExtResource("4_8ehkw")
+craftingInput = Array[ExtResource("1_xl55u")]([SubResource("Resource_ihqt3"), SubResource("Resource_mqgjh")])

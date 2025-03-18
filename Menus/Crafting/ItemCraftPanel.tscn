@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://qn4vyjykv2pe"]
+[gd_scene load_steps=10 format=3 uid="uid://qn4vyjykv2pe"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_e63du"]
 [ext_resource type="Script" path="res://Menus/Crafting/ItemCraftPanel.gd" id="2_u6fwq"]
 [ext_resource type="PackedScene" uid="uid://bvpq7vi2nicms" path="res://Menus/Crafting/ItemDisplay.tscn" id="3_m6de5"]
 [ext_resource type="Resource" uid="uid://bsqjbjshroed4" path="res://Menus/Crafting/Items/DirtTools/ShovelItem.tres" id="3_pt1jx"]
 [ext_resource type="Texture2D" uid="uid://b5aawwk5ffpdl" path="res://Menus/Crafting/Arrow.png" id="4_v0pef"]
-[ext_resource type="Texture2D" uid="uid://bx0umnlsf00gm" path="res://Environment/Treasures/Stromstein/Stromstein1k_alpha.jpg" id="5_n12jl"]
-[ext_resource type="Texture2D" uid="uid://cx0ye8gbus27h" path="res://Environment/Treasures/Stromstein/Stromstein1k_albedo.jpg" id="7_ct7o5"]
+[ext_resource type="Texture2D" uid="uid://5cbk13q7k7b1" path="res://Menus/Crafting/Items/Materials/Wood.png" id="5_5fjh4"]
+[ext_resource type="Texture2D" uid="uid://cdorkbfmaxj4g" path="res://Menus/Crafting/Items/Materials/Metal.png" id="6_ijkk2"]
+[ext_resource type="Texture2D" uid="uid://d37phw8o20d0r" path="res://Menus/Crafting/Items/DirtTools/Shovel.png" id="8_gordj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s07vy"]
+bg_color = Color(0.357967, 0.189222, 0.00492108, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ItemCraftPanel" type="PanelContainer" node_paths=PackedStringArray("ingredientsDisplay", "result")]
 custom_minimum_size = Vector2(300, 300)
@@ -14,8 +22,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("1_e63du")
 script = ExtResource("2_u6fwq")
-ingredientsDisplay = [NodePath("VBoxContainer/HFlowContainer/IngredientDisplay1"), NodePath("VBoxContainer/HFlowContainer/IngredientDisplay2"), NodePath("VBoxContainer/HFlowContainer/IngredientDisplay3")]
-result = NodePath("VBoxContainer/CraftingResult")
+ingredientsDisplay = [NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay1"), NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay2"), NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay3")]
+result = NodePath("VBoxContainer/Panel2/CraftingResult")
 activeItem = ExtResource("3_pt1jx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -23,19 +31,41 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 15
 
-[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_s07vy")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -37.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 
-[node name="IngredientDisplay1" parent="VBoxContainer/HFlowContainer" instance=ExtResource("3_m6de5")]
+[node name="IngredientDisplay1" parent="VBoxContainer/Panel/HFlowContainer" instance=ExtResource("3_m6de5")]
 layout_mode = 2
-texture = ExtResource("5_n12jl")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_5fjh4")
 
-[node name="IngredientDisplay2" parent="VBoxContainer/HFlowContainer" instance=ExtResource("3_m6de5")]
+[node name="IngredientDisplay2" parent="VBoxContainer/Panel/HFlowContainer" instance=ExtResource("3_m6de5")]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_ijkk2")
 
-[node name="IngredientDisplay3" parent="VBoxContainer/HFlowContainer" instance=ExtResource("3_m6de5")]
+[node name="IngredientDisplay3" parent="VBoxContainer/Panel/HFlowContainer" instance=ExtResource("3_m6de5")]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Arrow" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -44,11 +74,28 @@ size_flags_vertical = 4
 texture = ExtResource("4_v0pef")
 stretch_mode = 4
 
-[node name="CraftingResult" parent="VBoxContainer" instance=ExtResource("3_m6de5")]
+[node name="Panel2" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_s07vy")
+
+[node name="CraftingResult" parent="VBoxContainer/Panel2" instance=ExtResource("3_m6de5")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("7_ct7o5")
+texture = ExtResource("8_gordj")
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
