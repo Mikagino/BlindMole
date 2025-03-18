@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://c2yhay64sg8uw"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c2yhay64sg8uw"]
 
+[ext_resource type="Script" path="res://Menus/Crafting/CraftingInput.gd" id="1_5dy27"]
 [ext_resource type="Script" path="res://Menus/Crafting/Items/Item.gd" id="1_c1jy6"]
 [ext_resource type="Texture2D" uid="uid://ddw1a6gntrj1g" path="res://Menus/Crafting/Items/Materials/DirtIcon.png" id="2_fslhn"]
 
@@ -8,5 +9,4 @@ script = ExtResource("1_c1jy6")
 itemName = "Dirt"
 description = "It surrounds you..."
 icon = ExtResource("2_fslhn")
-craftingInput = Array[ExtResource("1_c1jy6")]([])
-inputCount = Array[int]([])
+craftingInput = Array[ExtResource("1_5dy27")]([])

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://2hny87u8rruf"]
+[gd_scene load_steps=11 format=3 uid="uid://2hny87u8rruf"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_nhh7j"]
+[ext_resource type="Script" path="res://Menus/Crafting/CraftingUI.gd" id="1_wl5kv"]
 [ext_resource type="PackedScene" uid="uid://cdq3pp5xg6al5" path="res://Menus/Crafting/ItemButton.tscn" id="2_6rw7n"]
 [ext_resource type="Resource" uid="uid://dmyi4kfsmce3p" path="res://Menus/Crafting/Items/Materials/MetalItem.tres" id="3_qd48a"]
 [ext_resource type="Resource" uid="uid://dtcqs8mqq3egl" path="res://Menus/Crafting/Items/Materials/Stromstein.tres" id="4_4cpe6"]
@@ -10,13 +11,13 @@
 [ext_resource type="Resource" uid="uid://bsqjbjshroed4" path="res://Menus/Crafting/Items/DirtTools/ShovelItem.tres" id="7_o01wk"]
 [ext_resource type="Resource" uid="uid://dt5vkoddhsxv2" path="res://Menus/Crafting/Items/OreTools/Pickaxe.tres" id="8_mw3kh"]
 
-[node name="CraftingUI" type="Control"]
-layout_mode = 3
+[node name="CraftingUI" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wl5kv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -131,3 +132,5 @@ craftPanel = NodePath("../../../../../ItemCraftPanel")
 
 [node name="ItemCraftPanel" parent="HBoxContainer" instance=ExtResource("4_e67ge")]
 layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="ClickedOutside"]
