@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://2hny87u8rruf"]
+[gd_scene load_steps=4 format=3 uid="uid://2hny87u8rruf"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_nhh7j"]
 [ext_resource type="PackedScene" uid="uid://cdq3pp5xg6al5" path="res://Menus/Crafting/ItemButton.tscn" id="2_6rw7n"]
-[ext_resource type="Resource" uid="uid://bsqjbjshroed4" path="res://Menus/Crafting/Items/DirtTools/ShovelItem.tres" id="3_qfmjp"]
 [ext_resource type="PackedScene" uid="uid://qn4vyjykv2pe" path="res://Menus/Crafting/ItemCraftPanel.tscn" id="4_e67ge"]
 
 [node name="CraftingUI" type="Control"]
@@ -56,7 +55,6 @@ size_flags_vertical = 3
 
 [node name="ItemButton" parent="HBoxContainer/TabContainer/All/ScrollContainer/HFlowContainer" instance=ExtResource("2_6rw7n")]
 layout_mode = 2
-item = ExtResource("3_qfmjp")
 
 [node name="Dirt" type="Control" parent="HBoxContainer/TabContainer"]
 visible = false

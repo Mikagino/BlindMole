@@ -1,3 +1,4 @@
+@tool
 extends Button
 
 @export var item: Item;
@@ -8,3 +9,4 @@ func _ready():
 
 func SetItem(newItem: Item):
 	textureRect.texture = newItem.icon;
+	item = newItem;

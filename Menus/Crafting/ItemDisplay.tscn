@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvpq7vi2nicms"]
+
+[ext_resource type="Texture2D" uid="uid://g40clsj0nnjt" path="res://icon.svg" id="1_gqno4"]
+[ext_resource type="Script" path="res://Menus/Crafting/ItemDisplay.gd" id="2_v1cwt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr048"]
+bg_color = Color(0.144063, 0.144063, 0.144062, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ItemDisplay" type="TextureRect" node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(75, 75)
+texture = ExtResource("1_gqno4")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_v1cwt")
+label = NodePath("MarginContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 17.0
+offset_bottom = 19.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wr048")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

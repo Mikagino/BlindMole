@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdq3pp5xg6al5"]
+[gd_scene load_steps=5 format=3 uid="uid://cdq3pp5xg6al5"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_f6348"]
 [ext_resource type="Script" path="res://Menus/Crafting/ItemButton.gd" id="2_w5w6a"]
-[ext_resource type="Texture2D" uid="uid://g40clsj0nnjt" path="res://icon.svg" id="3_xx8eu"]
+[ext_resource type="Resource" uid="uid://c2yhay64sg8uw" path="res://Menus/Crafting/Items/Materials/DirtItem.tres" id="3_8nkhx"]
+[ext_resource type="Texture2D" uid="uid://ddw1a6gntrj1g" path="res://Menus/Crafting/Items/Materials/DirtIcon.png" id="4_ach7q"]
 
 [node name="ItemButton" type="Button" node_paths=PackedStringArray("textureRect")]
 custom_minimum_size = Vector2(100, 100)
 theme = ExtResource("1_f6348")
 script = ExtResource("2_w5w6a")
+item = ExtResource("3_8nkhx")
 textureRect = NodePath("TextureRect")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -23,5 +25,5 @@ offset_right = 35.0
 offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_xx8eu")
+texture = ExtResource("4_ach7q")
 expand_mode = 1
