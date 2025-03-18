@@ -11,6 +11,8 @@ func SetItem(item: Item):
 
 func _draw():
 	if(activeItem == null): return;
+	if(activeItem.craftingInput.is_empty()): modulate = Color.TRANSPARENT
+	else: modulate = Color.WHITE
 	for i in range(ingredientsDisplay.size()):
 		if(i >= activeItem.craftingInput.size()):
 			ingredientsDisplay[i].hide()
