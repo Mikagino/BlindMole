@@ -121,6 +121,9 @@ light_energy = 0.4
 [node name="Player" parent="." instance=ExtResource("1_b2rdi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
 
+[node name="VoxelInteractions" parent="Player" index="6" node_paths=PackedStringArray("voxelTerrain")]
+voxelTerrain = NodePath("../../VoxelTerrain")
+
 [node name="VoxelTerrain" type="VoxelTerrain" parent="."]
 generator = SubResource("VoxelGeneratorNoise_aaaxj")
 mesher = SubResource("VoxelMesherTransvoxel_oa07p")
@@ -130,3 +133,5 @@ material_override = ExtResource("1_8guec")
 
 [node name="CrystalInstancer" type="VoxelInstancer" parent="VoxelTerrain"]
 library = SubResource("VoxelInstanceLibrary_828fs")
+
+[editable path="Player"]

@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgpjxoygnvyy4"]
+[gd_scene load_steps=12 format=3 uid="uid://dgpjxoygnvyy4"]
 
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/Player.gd" id="1_1fhis"]
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/ability_grab.gd" id="2_gwqkd"]
+[ext_resource type="Script" path="res://assets/VoxelInteraction/PlayerVoxelInteraction.gd" id="3_ammri"]
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/TreasureAudioArea.gd" id="3_n1j83"]
 [ext_resource type="AudioStream" uid="uid://dce7usya43p3h" path="res://Environment/Treasures/Crystal/fairy_sound-6469.mp3" id="4_eueag"]
 [ext_resource type="PackedScene" uid="uid://d4nguiqivbkbl" path="res://Player/TreasureAudioSource.tscn" id="5_3jphr"]
 [ext_resource type="AudioStream" uid="uid://caa3kta8eeyj1" path="res://Environment/Treasures/Stromstein/StromsteinSound.mp3" id="5_e5g72"]
 [ext_resource type="PackedScene" uid="uid://bg1i5p7dlewgk" path="res://Menus/GameUI/GameUI.tscn" id="7_ondp3"]
-[ext_resource type="Script" path="res://assets/VoxelInteraction/PlayerVoxelInteraction.gd" id="3_ammri"]
+[ext_resource type="PackedScene" uid="uid://drwd8ja25afqt" path="res://assets/Prefabs/Ball.tscn" id="9_t3e63"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euj4i"]
 
@@ -104,9 +105,12 @@ process_mode = 3
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("7_ondp3")]
 
+[node name="VoxelInteractions" type="Node3D" parent="." node_paths=PackedStringArray("raycast")]
+script = ExtResource("3_ammri")
+ball = ExtResource("9_t3e63")
+raycast = NodePath("../rotation_helper/Camera3D/ability_grab")
+
 [connection signal="area_entered" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="SetupAudioPlayer"]
 [connection signal="area_exited" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="RemoveAudioPlayer"]
 [connection signal="body_entered" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="SetupAudioPlayer"]
 [connection signal="timeout" from="SpatialAudioPlayers/ObstructionCheckTimer" to="SpatialAudio_Area3D" method="UpdateObstruction"]
-[node name="VoxelInteractions" type="Node3D" parent="."]
-script = ExtResource("3_ammri")

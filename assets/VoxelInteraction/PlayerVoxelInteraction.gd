@@ -2,24 +2,22 @@ extends Node3D
 
 @export var ball : PackedScene
 
-@export var voxelTerrain : VoxelTerrain
+@export var voxelTerrain : VoxelLodTerrain
 @export var raycast : RayCast3D
 
-
-var voxelTool : VoxelToolTerrain
+var voxelTool : VoxelToolLodTerrain
 
 var interactSpeed : float = 10
 
 func _ready() -> void:
 	voxelTool = voxelTerrain.get_voxel_tool()
 
-
 func _process(delta: float) -> void:
 	if not raycast.is_colliding():
 		return
 		
 	var collider = raycast.get_collider()
-	if collider is not VoxelTerrain:
+	if collider is not VoxelLodTerrain:
 		return
 		
 	var targetPos = raycast.get_collision_point()

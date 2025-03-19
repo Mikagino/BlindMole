@@ -79,3 +79,8 @@ library = SubResource("VoxelInstanceLibrary_rpki5")
 
 [node name="Player" parent="." instance=ExtResource("2_f30xh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.1924, 0)
+
+[node name="VoxelInteractions" parent="Player" index="6" node_paths=PackedStringArray("voxelTerrain")]
+voxelTerrain = NodePath("../../VoxelLodTerrain")
+
+[editable path="Player"]
