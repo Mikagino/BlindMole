@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://qn4vyjykv2pe"]
+[gd_scene load_steps=10 format=3 uid="uid://qn4vyjykv2pe"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_e63du"]
 [ext_resource type="Script" path="res://Menus/Crafting/ItemCraftPanel.gd" id="2_u6fwq"]
 [ext_resource type="PackedScene" uid="uid://bvpq7vi2nicms" path="res://Menus/Crafting/ItemDisplay.tscn" id="3_m6de5"]
+[ext_resource type="Resource" uid="uid://bsqjbjshroed4" path="res://Menus/Crafting/Items/DirtTools/ShovelItem.tres" id="3_ynui7"]
 [ext_resource type="Texture2D" uid="uid://b5aawwk5ffpdl" path="res://Menus/Crafting/Arrow.png" id="4_v0pef"]
 [ext_resource type="Texture2D" uid="uid://5cbk13q7k7b1" path="res://Menus/Crafting/Items/Materials/Wood.png" id="5_5fjh4"]
 [ext_resource type="Texture2D" uid="uid://cdorkbfmaxj4g" path="res://Menus/Crafting/Items/Materials/Metal.png" id="6_ijkk2"]
@@ -23,6 +24,7 @@ theme = ExtResource("1_e63du")
 script = ExtResource("2_u6fwq")
 ingredientsDisplay = [NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay1"), NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay2"), NodePath("VBoxContainer/Panel/HFlowContainer/IngredientDisplay3")]
 result = NodePath("VBoxContainer/Panel2/CraftingResult")
+activeItem = ExtResource("3_ynui7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -98,8 +100,10 @@ texture = ExtResource("8_gordj")
 [node name="Control" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="CraftButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 text = "Craft"
+
+[connection signal="pressed" from="VBoxContainer/CraftButton" to="." method="CraftItem"]

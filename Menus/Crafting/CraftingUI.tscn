@@ -12,13 +12,14 @@
 [ext_resource type="Resource" uid="uid://bhgxxbo4r3ydp" path="res://Menus/Crafting/Items/Materials/CrystalItem.tres" id="7_p0vgi"]
 [ext_resource type="Resource" uid="uid://dt5vkoddhsxv2" path="res://Menus/Crafting/Items/OreTools/Pickaxe.tres" id="8_mw3kh"]
 
-[node name="CraftingUI" type="Panel"]
+[node name="CraftingUI" type="Panel" node_paths=PackedStringArray("itemContainers")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wl5kv")
+itemContainers = [NodePath("HBoxContainer/TabContainer/Basic/ScrollContainer/HFlowContainer"), NodePath("HBoxContainer/TabContainer/Mineral/ScrollContainer/HFlowContainer"), NodePath("HBoxContainer/TabContainer/Energy/ScrollContainer/HFlowContainer"), NodePath("HBoxContainer/TabContainer/Tool/ScrollContainer/HFlowContainer")]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -42,9 +43,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_nhh7j")
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 
 [node name="Basic" type="Control" parent="HBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -64,11 +66,14 @@ size_flags_vertical = 3
 [node name="ItemButton" parent="HBoxContainer/TabContainer/Basic/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
 layout_mode = 2
 craftPanel = NodePath("../../../../../ItemCraftPanel")
+count = 1
 
 [node name="ItemButton4" parent="HBoxContainer/TabContainer/Basic/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
+visible = false
 layout_mode = 2
 item = ExtResource("5_7g0f1")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
+count = 1
 
 [node name="Mineral" type="Control" parent="HBoxContainer/TabContainer"]
 visible = false
@@ -89,16 +94,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ItemButton2" parent="HBoxContainer/TabContainer/Mineral/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
+visible = false
 layout_mode = 2
 item = ExtResource("3_qd48a")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
 
 [node name="ItemButton5" parent="HBoxContainer/TabContainer/Mineral/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
+visible = false
 layout_mode = 2
 item = ExtResource("7_p0vgi")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
 
 [node name="ItemButton3" parent="HBoxContainer/TabContainer/Mineral/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
+visible = false
 layout_mode = 2
 item = ExtResource("4_4cpe6")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
@@ -127,7 +135,6 @@ item = ExtResource("6_pwfy7")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
 
 [node name="Tool" type="Control" parent="HBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
@@ -148,13 +155,16 @@ size_flags_vertical = 3
 layout_mode = 2
 item = ExtResource("7_o01wk")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
+count = 1
 
 [node name="ItemButton2" parent="HBoxContainer/TabContainer/Tool/ScrollContainer/HFlowContainer" node_paths=PackedStringArray("craftPanel") instance=ExtResource("2_6rw7n")]
 layout_mode = 2
 item = ExtResource("8_mw3kh")
 craftPanel = NodePath("../../../../../ItemCraftPanel")
+count = 1
 
-[node name="ItemCraftPanel" parent="HBoxContainer" instance=ExtResource("4_e67ge")]
+[node name="ItemCraftPanel" parent="HBoxContainer" node_paths=PackedStringArray("craftingUI") instance=ExtResource("4_e67ge")]
 layout_mode = 2
+craftingUI = NodePath("../..")
 
 [connection signal="gui_input" from="." to="." method="ClickedOutside"]

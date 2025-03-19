@@ -1,16 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdq3pp5xg6al5"]
+[gd_scene load_steps=6 format=3 uid="uid://cdq3pp5xg6al5"]
 
 [ext_resource type="Theme" uid="uid://d2urdwvtdlpek" path="res://Menus/Menu.theme" id="1_f6348"]
 [ext_resource type="Script" path="res://Menus/Crafting/ItemButton.gd" id="2_w5w6a"]
 [ext_resource type="Resource" uid="uid://c2yhay64sg8uw" path="res://Menus/Crafting/Items/Materials/DirtItem.tres" id="3_8nkhx"]
 [ext_resource type="Texture2D" uid="uid://ddw1a6gntrj1g" path="res://Menus/Crafting/Items/Materials/DirtIcon.png" id="4_ach7q"]
 
-[node name="ItemButton" type="Button" node_paths=PackedStringArray("textureRect")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n15ms"]
+bg_color = Color(0.144063, 0.144063, 0.144062, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="ItemButton" type="Button" node_paths=PackedStringArray("textureRect", "label")]
+visible = false
 custom_minimum_size = Vector2(100, 100)
 theme = ExtResource("1_f6348")
 script = ExtResource("2_w5w6a")
 item = ExtResource("3_8nkhx")
 textureRect = NodePath("TextureRect")
+label = NodePath("TextureRect/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -27,3 +36,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_ach7q")
 expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -19.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n15ms")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -21,7 +21,6 @@ func _ready():
 	rotation_helper = $rotation_helper
 	flashlight = $rotation_helper/Camera3D/flashlight_player
 	
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
@@ -35,11 +34,11 @@ func _input(event):
 		rotation_helper.rotation = camera_rot
 	
 	# Release/Grab Mouse for debugging. You can change or replace this.
-	if Input.is_action_just_pressed("ui_cancel"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# if Input.is_action_just_pressed("ui_cancel"):
+	# 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+	# 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# 	else:
+	# 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	# Flashlight toggle. Defaults to F on Keyboard.
 	if event is InputEventKey:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgpjxoygnvyy4"]
+[gd_scene load_steps=10 format=3 uid="uid://dgpjxoygnvyy4"]
 
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/Player.gd" id="1_1fhis"]
 [ext_resource type="Script" path="res://assets/simple_fpsplayer/ability_grab.gd" id="2_gwqkd"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dce7usya43p3h" path="res://Environment/Treasures/Crystal/fairy_sound-6469.mp3" id="4_eueag"]
 [ext_resource type="PackedScene" uid="uid://d4nguiqivbkbl" path="res://Player/TreasureAudioSource.tscn" id="5_3jphr"]
 [ext_resource type="AudioStream" uid="uid://caa3kta8eeyj1" path="res://Environment/Treasures/Stromstein/StromsteinSound.mp3" id="5_e5g72"]
+[ext_resource type="PackedScene" uid="uid://bg1i5p7dlewgk" path="res://Menus/GameUI/GameUI.tscn" id="7_ondp3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_euj4i"]
 
@@ -96,6 +97,11 @@ bus = &"Treasure4"
 
 [node name="TreasureAudioSource5" parent="SpatialAudioPlayers" instance=ExtResource("5_3jphr")]
 bus = &"Treasure5"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("7_ondp3")]
 
 [connection signal="area_entered" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="SetupAudioPlayer"]
 [connection signal="area_exited" from="SpatialAudio_Area3D" to="SpatialAudio_Area3D" method="RemoveAudioPlayer"]

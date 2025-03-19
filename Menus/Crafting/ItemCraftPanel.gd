@@ -4,10 +4,14 @@ class_name ItemCraftPanel extends PanelContainer
 @export var ingredientsDisplay: Array[ItemDisplay];
 @export var result: ItemDisplay;
 @export var activeItem: Item;
+@export var craftingUI: CraftingUI
 
 func SetItem(item: Item):
 	activeItem = item
 	queue_redraw()
+
+func CraftItem():
+	craftingUI.CollectItem(activeItem)
 
 func _draw():
 	if(activeItem == null): return;
